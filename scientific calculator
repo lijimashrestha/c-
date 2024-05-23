@@ -1,0 +1,130 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+class ScientificCalculator {
+public:
+    // Function to add two numbers
+    double add(double a, double b) {
+        return a + b;
+    }
+
+    // Function to subtract two numbers
+    double subtract(double a, double b) {
+        return a - b;
+    }
+
+    // Function to multiply two numbers
+    double multiply(double a, double b) {
+        return a * b;
+    }
+
+    // Function to divide two numbers
+    double divide(double a, double b) {
+        if (b == 0) {
+            cout << "Error! Division by zero." << endl;
+            return NAN; // Not-A-Number
+        }
+        return a / b;
+    }
+
+    // Function to calculate square root
+    double squareRoot(double a) {
+        if (a < 0) {
+            cout << "Error! Cannot calculate square root of a negative number." << endl;
+            return NAN;
+        }
+        return sqrt(a);
+    }
+
+    // Function to calculate power
+    double power(double base, double exponent) {
+        return pow(base, exponent);
+    }
+
+    // Function to calculate factorial
+    int factorial(int n) {
+        if (n < 0) {
+            cout << "Error! Factorial is not defined for negative numbers." << endl;
+            return -1; // Error indicator
+        }
+        if (n == 0 || n == 1)
+            return 1;
+        else
+            return n * factorial(n - 1);
+    }
+};
+
+int main() {
+    ScientificCalculator calc;
+
+    cout << "Scientific Calculator\n";
+
+    double num1, num2;
+    int choice;
+    char ch;
+
+    do {
+        cout << "\nMenu:\n";
+        cout << "1. Addition\n";
+        cout << "2. Subtraction\n";
+        cout << "3. Multiplication\n";
+        cout << "4. Division\n";
+        cout << "5. Square Root\n";
+        cout << "6. Power\n";
+        cout << "7. Factorial\n";
+        cout << "8. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                cout << "Enter two numbers: ";
+                cin >> num1 >> num2;
+                cout << "Result: " << calc.add(num1, num2) << endl;
+                break;
+            case 2:
+                cout << "Enter two numbers: ";
+                cin >> num1 >> num2;
+                cout << "Result: " << calc.subtract(num1, num2) << endl;
+                break;
+            case 3:
+                cout << "Enter two numbers: ";
+                cin >> num1 >> num2;
+                cout << "Result: " << calc.multiply(num1, num2) << endl;
+                break;
+            case 4:
+                cout << "Enter two numbers: ";
+                cin >> num1 >> num2;
+                cout << "Result: " << calc.divide(num1, num2) << endl;
+                break;
+            case 5:
+                cout << "Enter a number: ";
+                cin >> num1;
+                cout << "Result: " << calc.squareRoot(num1) << endl;
+                break;
+            case 6:
+                cout << "Enter base and exponent: ";
+                cin >> num1 >> num2;
+                cout << "Result: " << calc.power(num1, num2) << endl;
+                break;
+            case 7:
+                int n;
+                cout << "Enter a number: ";
+                cin >> n;
+                cout << "Result: " << calc.factorial(n) << endl;
+                break;
+            case 8:
+                cout << "Exiting program. Goodbye!\n";
+                break;
+            default:
+                cout << "Invalid choice. Please try again." << endl;
+        }
+
+        cout << "Do you want to continue (y/n)? ";
+        cin >> ch;
+    } while (ch == 'y' || ch == 'Y');
+
+    return 0;
+}
